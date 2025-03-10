@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Success</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Signup Successful</h2>
+        <table border="1" id="userTable">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+        </table>
+        <a href="index.html"><button>Back</button></a>
+    </div>
+
+    <script>
+        let userData = JSON.parse(localStorage.getItem("userData"));
+        if (userData) {
+            let table = document.getElementById("userTable");
+            let row = table.insertRow(1);
+
+            Object.values(userData).forEach((val, index) => {
+                let cell = row.insertCell(index);
+                cell.textContent = val;
+            });
+        }
+    </script>
+</body>
+</html>
